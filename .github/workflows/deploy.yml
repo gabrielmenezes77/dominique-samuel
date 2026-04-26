@@ -1,0 +1,63 @@
+name: Deploy Website to S3
+
+on:
+  push:
+    branches: [main, hml, dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    # Usa o ambiente GitHub correto para habilitar aprovações/segredos
+    environment: ${{ github.ref_name == 'main' && 'prod' || github.ref_name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Derive env tag (prod | hml | dev) para uso posterior
+      - name: Set env tag
+        id: envtag
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "TAG=prod" >> "$GITHUB_ENV"
+          elif [[ "${{ github.ref_name }}" == "hml" ]]; then
+            echo "TAG=hml" >> "$GITHUB_ENV"
+          elif [[ "${{ github.ref_name }}" == "dev" ]]; then
+            echo "TAG=dev" >> "$GITHUB_ENV"
+          else
+            echo "TAG=unknown" >> "$GITHUB_ENV"
+          fi
+        shell: bash
+
+      # - name: Setup pnpm
+      #   uses: pnpm/action-setup@v4
+      #   with:
+      #     version: 9
+
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "20"
+      #     cache: "pnpm"
+
+      # - name: Install dependencies
+      #   run: pnpm install --frozen-lockfile
+
+      # - name: Build project
+      #   run: pnpm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          audience: sts.amazonaws.com
+
+      - name: Deploy static site to S3
+        run: aws s3 sync ./out "s3://${{ vars.BUCKET_NAME }}" --delete
+        shell: bash
