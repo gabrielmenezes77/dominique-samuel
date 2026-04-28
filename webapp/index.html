@@ -1,36 +1,303 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dominique e Samuel</title>
-        <link rel="stylesheet" href="assets/style.css">
-    </head>
-    <body>
-        <nav>
-            <ul>
-               <li><a href="#mensagem-inicial">MENSAGEM INICIAL</a></li>
-               <li><a href="#contagem-regressiva">CONTAGEM REGRESSIVA</a></li>
-               <li><a href="#confirmacao-de-presenca">CONFIRMAÇÃO DE PRESENÇA</a></li>
-               <li><a href="https://site.lejour.com.br/lista-de-presentes/dominique-e-samuel?targetLanguage=PT">LISTA DE PRESENTES</a></li>
-               <li><a href="#album-do-casamento">ALBUM DO CASAMENTO</a></li>
-            </ul>
-        </nav>
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samuel &amp; Dominique — 20 de Junho de 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo-bg.svg" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header
+      id="site-header"
+      class="site-header"
+      aria-label="Samuel e Dominique"
+    >
+      <div class="site-header__inner">
+        <span
+          class="site-header__logo logo-mark"
+          role="img"
+          aria-label="DS"
+        ></span>
+        <span class="site-header__name">Samuel &amp; Dominique</span>
+      </div>
+    </header>
 
-        <section id="mensagem-inicial">
-            <h1>MENSAGEM INICIAL</h1>
-            <p>O grande dia está chegando e não poderíamos estar mais animados para compartilhar com a nossa família e amigos um dos dias mais especiais das nossas vidas! Queremos muito sua presença neste dia tão importante com muita festa, amor e carinho em uma comemoração que irá nos marcar para sempre!</p>
-        </section>
+    <!--  LOADER  -->
+    <div id="loader">
+      <span class="loader-logo logo-mark" role="img" aria-label="DS"></span>
+      <div class="loader-track">
+        <div id="loader-bar"></div>
+      </div>
+      <span class="loader-caption">carregando…</span>
+    </div>
 
-        <section id="contagem-regressiva">
-            <h1>CONTAGEM REGRESSIVA</h1>
-            <p>20/06/2026</p>
-        </section>
+    <!--  FIXED CANVAS  -->
+    <div id="canvas-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
 
-        <section id="confirmacao-de-presenca">
-            <h1>CONFIRMAÇÃO DE PRESENÇA</h1>
-        </section>
+    <!--  SCROLL HINT  -->
+    <div id="scroll-hint">
+      <span class="hint-lbl">Role para descobrir</span>
+      <div class="hint-chevron"></div>
+    </div>
 
-    </body>
+    <!--  VIDEO SCROLL SPACER  -->
+    <div id="video-spacer"></div>
 
+    <!--  PAGE CONTENT  -->
+    <div class="page-content">
+      <!-- MENSAGEM -->
+      <section class="section section-mensagem">
+        <span
+          class="mensagem-mono logo-mark ri"
+          role="img"
+          aria-label="D &amp; S"
+        ></span>
+
+        <p class="mensagem-text ri">
+          Com o coração transbordando de alegria,<br />
+          convidamos você a ser parte de um momento<br />
+          que guardamos há tanto tempo —<br />
+          o início de uma nova história juntos.
+        </p>
+
+        <p class="mensagem-assin ri">Samuel &amp; Dominique</p>
+      </section>
+
+      <!-- DIVIDER -->
+      <div class="divider-wrap">
+        <svg
+          class="botanical-divider"
+          viewBox="0 0 280 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="0"
+            y1="11"
+            x2="96"
+            y2="11"
+            stroke="#6E7E6B"
+            stroke-width="0.7"
+          />
+          <line
+            x1="184"
+            y1="11"
+            x2="280"
+            y2="11"
+            stroke="#6E7E6B"
+            stroke-width="0.7"
+          />
+          <!-- vine -->
+          <path
+            d="M97 11 Q105 3 113 11 Q121 19 129 11 Q137 3 145 11 Q153 19 161 11 Q169 3 177 11 Q185 19 183 11"
+            stroke="#8A9E55"
+            stroke-width="0.9"
+            fill="none"
+          />
+          <!-- centre leaf -->
+          <path
+            d="M137 7 Q140 2 143 7"
+            stroke="#5C6B2E"
+            stroke-width="0.8"
+            fill="none"
+          />
+          <circle cx="140" cy="11" r="1.2" fill="#5C6B2E" opacity="0.55" />
+        </svg>
+      </div>
+
+      <!-- CONTAGEM REGRESSIVA -->
+      <section class="section section-countdown">
+        <span class="cd-eyebrow ri">faltam apenas</span>
+
+        <div class="cd-row">
+          <div class="cd-col ri">
+            <span class="cd-num" id="cd-days">00</span>
+            <span class="cd-lbl">dias</span>
+          </div>
+
+          <span class="cd-sep" aria-hidden="true">·</span>
+
+          <div class="cd-col ri">
+            <span class="cd-num" id="cd-hours">00</span>
+            <span class="cd-lbl">horas</span>
+          </div>
+
+          <span class="cd-sep" aria-hidden="true">·</span>
+
+          <div class="cd-col ri">
+            <span class="cd-num" id="cd-mins">00</span>
+            <span class="cd-lbl">minutos</span>
+          </div>
+
+          <span class="cd-sep" aria-hidden="true">·</span>
+
+          <div class="cd-col ri">
+            <span class="cd-num" id="cd-secs">00</span>
+            <span class="cd-lbl">segundos</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIVIDER -->
+      <div class="divider-wrap">
+        <svg
+          class="botanical-divider"
+          viewBox="0 0 280 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="0"
+            y1="11"
+            x2="96"
+            y2="11"
+            stroke="#6E7E6B"
+            stroke-width="0.7"
+          />
+          <line
+            x1="184"
+            y1="11"
+            x2="280"
+            y2="11"
+            stroke="#6E7E6B"
+            stroke-width="0.7"
+          />
+          <path
+            d="M97 11 Q105 3 113 11 Q121 19 129 11 Q137 3 145 11 Q153 19 161 11 Q169 3 177 11 Q185 19 183 11"
+            stroke="#8A9E55"
+            stroke-width="0.9"
+            fill="none"
+          />
+          <path
+            d="M137 7 Q140 2 143 7"
+            stroke="#5C6B2E"
+            stroke-width="0.8"
+            fill="none"
+          />
+          <circle cx="140" cy="11" r="1.2" fill="#5C6B2E" opacity="0.55" />
+        </svg>
+      </div>
+
+      <!-- CONFIRMAÇÃO DE PRESENÇA -->
+      <section class="section section-rsvp">
+        <span class="s-eyebrow ri">Reserve sua presença</span>
+        <h2 class="s-title ri">Confirmação de Presença</h2>
+
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="f-row">
+            <div class="f-group ri">
+              <label class="f-lbl" for="nome">Nome</label>
+              <input
+                class="f-field"
+                id="nome"
+                name="nome"
+                type="text"
+                placeholder="Seu nome"
+                required
+              />
+            </div>
+            <div class="f-group ri">
+              <label class="f-lbl" for="sobrenome">Sobrenome</label>
+              <input
+                class="f-field"
+                id="sobrenome"
+                name="sobrenome"
+                type="text"
+                placeholder="Seu sobrenome"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="f-group ri">
+            <label class="f-lbl" for="email">E-mail</label>
+            <input
+              class="f-field"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="seu@email.com"
+              required
+            />
+          </div>
+
+          <div class="f-group ri">
+            <span class="f-lbl">Você confirmará presença?</span>
+            <div class="radio-row">
+              <label class="radio-opt">
+                <input type="radio" name="confirmacao" value="sim" required />
+                <span class="radio-txt">Sim, estarei lá!</span>
+              </label>
+              <label class="radio-opt">
+                <input type="radio" name="confirmacao" value="nao" />
+                <span class="radio-txt">Não poderei ir</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="f-group ri">
+            <label class="f-lbl" for="acompanhantes"
+              >Número de acompanhantes</label
+            >
+            <div class="f-select-wrap">
+              <select class="f-field" id="acompanhantes" name="acompanhantes">
+                <option value="0">Apenas eu</option>
+                <option value="1">1 acompanhante</option>
+                <option value="2">2 acompanhantes</option>
+                <option value="3">3 acompanhantes</option>
+                <option value="4">4 acompanhantes</option>
+                <option value="5">5 ou mais acompanhantes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-group ri">
+            <label class="f-lbl" for="obs">Observações</label>
+            <textarea
+              class="f-field"
+              id="obs"
+              name="obs"
+              placeholder="Alguma restrição alimentar ou mensagem para o casal…"
+            ></textarea>
+          </div>
+
+          <button class="btn-confirm ri" type="submit">
+            Confirmar Presença
+          </button>
+
+          <p class="rsvp-note ri">
+            Em breve você receberá mais informações sobre o evento.
+          </p>
+        </form>
+      </section>
+
+      <!-- FOOTER -->
+      <footer>
+        <span
+          class="footer-mono logo-mark ri"
+          role="img"
+          aria-label="DS"
+        ></span>
+        <p class="footer-names ri">Samuel &amp; Dominique</p>
+        <p class="footer-date ri">20 de Junho de 2026</p>
+        <p class="footer-love ri">feito com amor &hearts;</p>
+      </footer>
+    </div>
+    <!-- /page-content -->
+
+    <!-- CDN libs -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
