@@ -182,8 +182,8 @@ body::after {
 }
 .hint-lbl {
   font-family: var(--ff-b);
-  font-size: 0.58rem;
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 7000;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(92, 107, 46, 0.65);
