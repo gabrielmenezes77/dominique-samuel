@@ -7,6 +7,43 @@
   padding: 0;
 }
 
+nav{
+  position: relative;
+  z-index: 999;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;    
+    justify-content: center; 
+    gap: 15px;             
+    list-style: none;
+    padding: 20px 0;        
+    margin: 0;
+}
+
+nav li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--olive);        
+    background-color: #fffff9; 
+    padding: 12px 25px;
+    border-radius: 50px;   
+    font-family: sans-serif; 
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;   
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #FDFDFD;
+    transform: translateY(-3px);          
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); 
+    color: var(--olive);                       
+}
+
 :root {
   --olive: #5c6b2e;
   --sage: #8a9e55;
@@ -294,21 +331,23 @@ body::after {
 .mensagem-text {
   font-family: var(--ff-d);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1.3rem, 2.4vw, 1.75rem);
   line-height: 1.95;
   color: var(--text);
   max-width: 620px;
   margin: 0 auto;
   letter-spacing: 0.012em;
+  padding: 10px;
 }
 .mensagem-assin {
   font-family: var(--ff-d);
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: var(--olive);
-  margin-top: 2.6rem;
+  margin-top: 3.6rem;
   letter-spacing: 0.07em;
+  padding-bottom: 20px;
 }
 
 /* COUNTDOWN section */
@@ -320,11 +359,11 @@ body::after {
 .cd-eyebrow {
   display: block;
   font-family: var(--ff-b);
-  font-size: 0.6rem;
-  font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--olive);
   margin-bottom: 3.8rem;
 }
 .cd-row {
@@ -540,8 +579,8 @@ textarea.f-field {
 .rsvp-note {
   font-family: var(--ff-d);
   font-style: italic;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--muted);
   text-align: center;
   margin-top: 0.5rem;
@@ -585,15 +624,15 @@ footer {
 }
 .footer-names {
   font-family: var(--ff-d);
-  font-size: 1.45rem;
-  font-weight: 400;
-  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--muted);
   letter-spacing: 0.06em;
 }
 .footer-date {
   font-family: var(--ff-b);
-  font-size: 0.58rem;
-  font-weight: 300;
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--muted);
@@ -601,9 +640,9 @@ footer {
 }
 .footer-love {
   font-family: var(--ff-b);
-  font-size: 0.58rem;
-  font-weight: 200;
+  font-size: 0.9rem;
+  font-weight: 500;
   letter-spacing: 0.15em;
-  color: rgba(110, 126, 107, 0.45);
+  color: var(--muted);
   margin-top: 3.5rem;
 }
