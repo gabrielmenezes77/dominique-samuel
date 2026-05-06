@@ -252,7 +252,9 @@ function initForm() {
     )?.value;
     const isDeclined = confirmacao === "nao";
     acompanhantesField.disabled = isDeclined;
-    acompanhantesField.value = isDeclined ? "0" : acompanhantesField.value || "0";
+    acompanhantesField.value = isDeclined
+      ? "0"
+      : acompanhantesField.value || "0";
   }
 
   confirmacaoInputs.forEach((input) => {
@@ -268,7 +270,9 @@ function initForm() {
     const payload = {
       nome: String(formData.get("nome") || "").trim(),
       sobrenome: String(formData.get("sobrenome") || "").trim(),
-      email: String(formData.get("email") || "").trim().toLowerCase(),
+      email: String(formData.get("email") || "")
+        .trim()
+        .toLowerCase(),
       confirmacao: String(formData.get("confirmacao") || "").trim(),
       acompanhantes: Number.parseInt(
         String(formData.get("acompanhantes") || "0"),
