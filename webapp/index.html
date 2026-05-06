@@ -249,7 +249,7 @@
                 <option value="2">2 acompanhantes</option>
                 <option value="3">3 acompanhantes</option>
                 <option value="4">4 acompanhantes</option>
-                <option value="5">5 ou mais acompanhantes</option>
+                <option value="5">5 acompanhantes</option>
               </select>
             </div>
           </div>
@@ -260,6 +260,7 @@
               class="f-field"
               id="obs"
               name="obs"
+              maxlength="1000"
               placeholder="Alguma restrição alimentar ou mensagem para o casal…"
             ></textarea>
           </div>
@@ -267,6 +268,13 @@
           <button class="btn-confirm ri" type="submit">
             Confirmar Presença
           </button>
+
+          <p
+            id="rsvp-feedback"
+            class="rsvp-feedback ri"
+            role="status"
+            aria-live="polite"
+          ></p>
 
           <p class="rsvp-note ri">
             Em breve você receberá mais informações sobre o evento.

@@ -12,6 +12,7 @@ const FRAME_COUNT =
     : FRAME_COUNT_DESKTOP;
 const BG_COLOR = "#F5F3EE";
 const IMAGE_SCALE = 0.88;
+const RSVP_ENDPOINT = "https://www.dominique-samuel.com/api/rsvp";
 
 // DOM refs
 const canvas = document.getElementById("canvas");
@@ -148,8 +149,8 @@ function initScroll() {
   ScrollTrigger.create({
     trigger: spacer,
     start: "bottom top",
-    onEnter: () => siteHeader.classList.add("scrolled"),
-    onLeaveBack: () => siteHeader.classList.remove("scrolled"),
+    onEnter: () => siteHeader?.classList.add("scrolled"),
+    onLeaveBack: () => siteHeader?.classList.remove("scrolled"),
   });
 
   // Section reveals — stagger items per section
@@ -227,7 +228,108 @@ function startCountdown() {
 /* ── RSVP form placeholder ─────────────────────────────────── */
 function initForm() {
   const form = document.getElementById("rsvp-form");
+  const feedback = document.getElementById("rsvp-feedback");
   if (!form) return;
+
+  const btn = form.querySelector(".btn-confirm");
+  const confirmacaoInputs = form.querySelectorAll('input[name="confirmacao"]');
+  const acompanhantesField = form.querySelector("#acompanhantes");
+  const initialButtonLabel = btn?.textContent ?? "Confirmar Presença";
+
+  function setFeedback(message, type = "") {
+    if (!feedback) return;
+    feedback.textContent = message;
+    feedback.classList.remove("is-success", "is-error");
+    if (type) {
+      feedback.classList.add(type);
+    }
+  }
+
+  function syncAcompanhantesState() {
+    if (!acompanhantesField) return;
+    const confirmacao = form.querySelector(
+      'input[name="confirmacao"]:checked',
+    )?.value;
+    const isDeclined = confirmacao === "nao";
+    acompanhantesField.disabled = isDeclined;
+    acompanhantesField.value = isDeclined ? "0" : acompanhantesField.value || "0";
+  }
+
+  confirmacaoInputs.forEach((input) => {
+    input.addEventListener("change", syncAcompanhantesState);
+  });
+  syncAcompanhantesState();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!btn) return;
+
+    const formData = new FormData(form);
+    const payload = {
+      nome: String(formData.get("nome") || "").trim(),
+      sobrenome: String(formData.get("sobrenome") || "").trim(),
+      email: String(formData.get("email") || "").trim().toLowerCase(),
+      confirmacao: String(formData.get("confirmacao") || "").trim(),
+      acompanhantes: Number.parseInt(
+        String(formData.get("acompanhantes") || "0"),
+        10,
+      ),
+      obs: String(formData.get("obs") || "").trim(),
+    };
+
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+    setFeedback("Enviando sua confirmacao...", "");
+
+    try {
+      const response = await fetch(RSVP_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      let responseData = null;
+      try {
+        responseData = await response.json();
+      } catch {
+        responseData = null;
+      }
+
+      if (!response.ok) {
+        const errorMessage =
+          responseData?.error ||
+          responseData?.message ||
+          "Nao foi possivel registrar sua confirmacao agora.";
+        throw new Error(errorMessage);
+      }
+
+      btn.textContent = "Confirmacao Enviada";
+      setFeedback(
+        payload.confirmacao === "sim"
+          ? "Presenca confirmada com sucesso."
+          : "Resposta registrada com sucesso.",
+        "is-success",
+      );
+      form.reset();
+      syncAcompanhantesState();
+      btn.disabled = false;
+      btn.textContent = initialButtonLabel;
+    } catch (error) {
+      btn.disabled = false;
+      btn.textContent = initialButtonLabel;
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Nao foi possivel registrar sua confirmacao agora.",
+        "is-error",
+      );
+    }
+  });
+  return;
+  /*
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const btn = form.querySelector(".btn-confirm");
@@ -235,6 +337,7 @@ function initForm() {
     btn.style.background = "#8A9E55";
     btn.disabled = true;
   });
+  */
 }
 
 /* ── Bootstrap ─────────────────────────────────────────────── */

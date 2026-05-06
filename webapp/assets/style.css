@@ -576,6 +576,23 @@ textarea.f-field {
   cursor: default;
 }
 
+.rsvp-feedback {
+  min-height: 1.4rem;
+  font-family: var(--ff-b);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.rsvp-feedback.is-success {
+  color: var(--olive);
+}
+
+.rsvp-feedback.is-error {
+  color: #9e4d3c;
+}
+
 .rsvp-note {
   font-family: var(--ff-d);
   font-style: italic;
