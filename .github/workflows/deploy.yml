@@ -34,22 +34,22 @@ jobs:
           fi
         shell: bash
 
-      # - name: Setup pnpm
-      #   uses: pnpm/action-setup@v4
-      #   with:
-      #     version: 9
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "20"
-      #     cache: "pnpm"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
 
-      # - name: Install dependencies
-      #   run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      # - name: Build project
-      #   run: pnpm run build
+      - name: Build project
+        run: pnpm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -60,5 +60,7 @@ jobs:
 
       - name: Deploy static site to S3
         # run: aws s3 sync ./out "s3://${{ vars.BUCKET_NAME }}" --delete
-        run: aws s3 sync ./webapp "s3://${{ vars.BUCKET_NAME }}" --delete
+        # run: aws s3 sync ./webapp "s3://${{ vars.BUCKET_NAME }}" --delete
+        run: aws s3 sync ./dist "s3://${{ vars.BUCKET_NAME }}" --delete
+
         shell: bash
