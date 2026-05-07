@@ -1,0 +1,31 @@
+/* Fixed canvas layer — sits behind all page content */
+.canvasWrap {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--ivory);
+}
+
+.canvas {
+  display: block;
+}
+
+/* Scroll spacer — drives frame scrubbing via ScrollTrigger */
+.videoSpacer {
+  height: 300vh;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .videoSpacer {
+    height: 150vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .videoSpacer {
+    height: 120vh;
+  }
+}

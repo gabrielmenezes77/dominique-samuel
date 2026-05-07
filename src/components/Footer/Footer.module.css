@@ -1,0 +1,50 @@
+/* ============================================================
+   Footer
+   Ported from webapp/assets/style.css — footer, .footer-mono,
+   .footer-names, .footer-date, .footer-love
+   ============================================================ */
+
+.footer {
+  position: relative;
+  padding: 5.5rem 2rem 4rem;
+  text-align: center;
+  background: var(--ivory);
+  border-top: 1px solid rgba(110, 126, 107, 0.18);
+}
+
+/* LogoMark wrapper — dimensions are handled by the LogoMark component itself */
+.footerMono {
+  margin: 0 auto 1.8rem;
+  opacity: 0.9;
+}
+
+.footerNames {
+  font-family: var(--ff-d);
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.06em;
+}
+
+.footerDate {
+  font-family: var(--ff-b);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.75rem;
+}
+
+.footerLove {
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-top: 3.5rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}

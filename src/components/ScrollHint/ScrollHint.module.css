@@ -1,0 +1,44 @@
+/* ============================================================
+   ScrollHint
+   Ported from webapp/assets/style.css — #scroll-hint, .hint-lbl,
+   .hint-chevron
+   ============================================================ */
+
+.scrollHint {
+  position: fixed;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hintLbl {
+  font-family: var(--ff-b);
+  font-size: 11px; /* was 18px — matches nav pill typographic scale */
+  /* As-Is had font-weight: 7000 which is invalid; browsers render it as 700 */
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(92, 107, 46, 0.65);
+}
+
+/* Chevron references the global @keyframes chev-bounce from animations.css */
+.hintChevron {
+  width: 17px;
+  height: 17px;
+  border-right: 1.5px solid rgba(92, 107, 46, 0.5);
+  border-bottom: 1.5px solid rgba(92, 107, 46, 0.5);
+  transform: rotate(45deg);
+  animation: chev-bounce 1.9s ease-in-out infinite;
+}

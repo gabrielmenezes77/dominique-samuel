@@ -1,0 +1,12 @@
+.claude/*
+.kiro/*
+dist/*
+node_modules/*
+.vscode/*
+
+.claude/
+.kiro/
+dist/
+node_modules/
+.vscode/
+
