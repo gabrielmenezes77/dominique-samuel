@@ -165,40 +165,39 @@ export default function RSVPSection() {
         </div>
 
         {/* Acompanhantes select */}
-        <div className={`${styles.fGroup} ri`}>
-          <label className={styles.fLbl} htmlFor="acompanhantes">
-            Número de acompanhantes
-          </label>
-          <div className={styles.fSelectWrap}>
-            <select
-              className={styles.fField}
-              id="acompanhantes"
-              name="acompanhantes"
-              value={form.acompanhantes}
-              disabled={acompanhantesDisabled}
-              onChange={handleChange}
-            >
-              <option value="0">Apenas eu</option>
-              <option value="1">1 acompanhante</option>
-              <option value="2">2 acompanhantes</option>
-              <option value="3">3 acompanhantes</option>
-              <option value="4">4 acompanhantes</option>
-              <option value="5">5 acompanhantes</option>
-            </select>
-          </div>
-        </div>
+        {/* <div className={`${styles.fGroup} ri`}> */}
+          {/* <label className={styles.fLbl} htmlFor="acompanhantes"> */}
+            {/* Número de acompanhantes */}
+          {/* </label> */}
+          {/* <div className={styles.fSelectWrap}> */}
+            {/* <select */}
+              {/* className={styles.fField} */}
+              {/* id="acompanhantes" */}
+              {/* name="acompanhantes" */}
+              {/* value={form.acompanhantes} */}
+              {/* disabled={acompanhantesDisabled} */}
+              {/* onChange={handleChange} */}
+              {/* <option value="0">Apenas eu</option> */}
+              {/* <option value="1">1 acompanhante</option> */}
+              {/* <option value="2">2 acompanhantes</option> */}
+              {/* <option value="3">3 acompanhantes</option> */}
+              {/* <option value="4">4 acompanhantes</option> */}
+              {/* <option value="5">5 acompanhantes</option> */}
+            {/* </select> */}
+          {/* </div> */}
+        {/* </div> */}
 
-        {/* Observações */}
+        {/* Mensagem */}
         <div className={`${styles.fGroup} ri`}>
           <label className={styles.fLbl} htmlFor="obs">
-            Observações
+             Mensagem para o casal
           </label>
           <textarea
             className={styles.fField}
             id="obs"
             name="obs"
             maxLength={1000}
-            placeholder="Alguma restrição alimentar ou mensagem para o casal…"
+            placeholder="Digite aqui"
             value={form.obs}
             onChange={handleChange}
           />
