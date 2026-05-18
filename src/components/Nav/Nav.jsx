@@ -86,7 +86,7 @@ export default function Nav({ scrolled = false, onAnchorClick }) {
             {/* External link — target="_blank" with rel="noopener noreferrer"
                 per security requirements (Requirement 14.2). */}
             <a
-              href="https://site.lejour.com.br/lista-de-presentes/dominique-e-samuel?targetLanguage=PT"
+              href="https://wa.me/5522999105995?text=Ol%C3%A1!%20Vim%20pela%20lista%20de%20presentes%20do%20casamento%20de%20Dominique%20e%20Samuel."
               className={styles.navLink}
               target="_blank"
               rel="noopener noreferrer"
