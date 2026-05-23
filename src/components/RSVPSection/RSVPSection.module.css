@@ -12,7 +12,7 @@
 .sEyebrow {
   display: block;
   font-family: var(--ff-b);
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -24,8 +24,8 @@
 .sTitle {
   font-family: var(--ff-d);
   font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-  font-weight: 500;
-  color: var(--text);
+  font-weight: 400;
+  color: var(--olive);
   letter-spacing: -0.02em;
   margin-bottom: 3.5rem;
   line-height: 1.15;
