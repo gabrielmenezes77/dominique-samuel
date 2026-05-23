@@ -34,6 +34,11 @@ export default function CanvasAnimation({
   return (
     <>
       <div id="canvas-wrap" className={styles.canvasWrap}>
+         <img 
+          src="webapp\assets\images\mobile-logo.jpeg" 
+          alt="Background Mobile" 
+          className={styles.imageMobile} 
+        />
         <canvas ref={canvasRef} id="canvas" className={styles.canvas} />
       </div>
       <div id="video-spacer" className={styles.videoSpacer} />
