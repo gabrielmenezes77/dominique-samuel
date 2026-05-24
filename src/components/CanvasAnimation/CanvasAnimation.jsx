@@ -35,7 +35,7 @@ export default function CanvasAnimation({
     <>
       <div id="canvas-wrap" className={styles.canvasWrap}>
          <img 
-          src="webapp\assets\images\mobile-logo.jpeg" 
+          src="/assets/images/mobile-logo.jpeg" 
           alt="Background Mobile" 
           className={styles.imageMobile} 
         />
