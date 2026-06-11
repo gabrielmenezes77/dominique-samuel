@@ -1,0 +1,93 @@
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.label {
+  color: var(--muted);
+  font-family: var(--ff-b);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid rgba(74, 87, 38, 0.22);
+  border-radius: 6px;
+  background: rgba(255, 255, 249, 0.92);
+  color: var(--text);
+  font-family: var(--ff-b);
+  font-size: 1rem;
+  padding: 0.75rem 0.9rem;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.field:focus {
+  border-color: var(--olive);
+  box-shadow: 0 0 0 3px rgba(122, 143, 72, 0.18);
+}
+
+.field:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.fieldError,
+.feedback {
+  color: #8f2c20;
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.feedback {
+  border-left: 3px solid #8f2c20;
+  background: rgba(143, 44, 32, 0.08);
+  padding: 0.75rem 0.85rem;
+}
+
+.submitButton {
+  min-height: 48px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--olive);
+  color: #fff;
+  cursor: pointer;
+  font-family: var(--ff-b);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.85rem 1rem;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #39441d;
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.recoveryNote {
+  color: rgba(26, 26, 26, 0.68);
+  font-family: var(--ff-b);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

@@ -1,0 +1,136 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 26, 26, 0.32);
+  padding: 1rem;
+}
+
+.dialog {
+  width: min(100%, 760px);
+  max-height: min(92dvh, 860px);
+  overflow: auto;
+  border-radius: 8px;
+  background: var(--ivory);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.header h2 {
+  font-family: var(--ff-d);
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.header button,
+.footer button {
+  border: 1px solid rgba(74, 87, 38, 0.22);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--olive);
+  cursor: pointer;
+  font: 700 0.78rem var(--ff-b);
+  letter-spacing: 0.08em;
+  padding: 0.65rem 0.8rem;
+  text-transform: uppercase;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form span,
+.meta dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  border: 1px solid rgba(74, 87, 38, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 249, 0.86);
+  color: var(--text);
+  font: 500 0.95rem var(--ff-b);
+  padding: 0.7rem 0.75rem;
+}
+
+.form small,
+.formError {
+  color: #8f2c20;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.formError {
+  margin-bottom: 1rem;
+}
+
+.full,
+.meta,
+.footer {
+  grid-column: 1 / -1;
+}
+
+.meta {
+  display: grid;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(74, 87, 38, 0.12);
+  padding-top: 0.9rem;
+}
+
+.meta div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.7rem;
+}
+
+.meta dd {
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.footer .primary {
+  border-color: var(--olive);
+  background: var(--olive);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .meta div {
+    grid-template-columns: 1fr;
+  }
+}

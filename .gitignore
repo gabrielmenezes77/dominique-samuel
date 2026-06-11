@@ -4,3 +4,9 @@ dist/
 node_modules/
 .vscode/
 logs_*/
+
+# Environment variable files with real secrets.
+# .env.example is tracked (no real values) — all others are ignored.
+.env
+.env.local
+.env.*.local

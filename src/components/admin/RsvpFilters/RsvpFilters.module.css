@@ -1,0 +1,57 @@
+.toolbar {
+  width: min(100%, 1120px);
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(140px, 180px) minmax(180px, 220px) minmax(100px, 120px) auto;
+  gap: 0.8rem;
+  margin: 0 auto 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select {
+  min-height: 42px;
+  border: 1px solid rgba(74, 87, 38, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 249, 0.78);
+  color: var(--text);
+  font: 500 0.92rem var(--ff-b);
+  padding: 0.65rem 0.75rem;
+}
+
+.createButton {
+  align-self: end;
+  min-height: 42px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--olive);
+  color: #fff;
+  cursor: pointer;
+  font: 700 0.78rem var(--ff-b);
+  letter-spacing: 0.1em;
+  padding: 0.65rem 0.95rem;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .toolbar {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+}

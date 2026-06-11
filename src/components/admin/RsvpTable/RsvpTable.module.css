@@ -1,0 +1,134 @@
+.tableWrap {
+  width: min(100%, 1120px);
+  overflow-x: auto;
+  margin: 0 auto;
+  border: 1px solid rgba(74, 87, 38, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 249, 0.68);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid rgba(74, 87, 38, 0.1);
+  padding: 0.8rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.table td {
+  color: rgba(26, 26, 26, 0.86);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+
+.sim {
+  background: rgba(74, 87, 38, 0.12);
+  color: var(--olive);
+}
+
+.nao {
+  background: rgba(143, 44, 32, 0.1);
+  color: #8f2c20;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.actions button {
+  border: 1px solid rgba(74, 87, 38, 0.2);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--olive);
+  cursor: pointer;
+  font: 700 0.72rem var(--ff-b);
+  padding: 0.45rem 0.55rem;
+}
+
+.actions .danger {
+  border-color: rgba(143, 44, 32, 0.24);
+  color: #8f2c20;
+}
+
+.empty {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  border: 1px dashed rgba(74, 87, 38, 0.25);
+  border-radius: 8px;
+  color: rgba(26, 26, 26, 0.68);
+  padding: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .tableWrap {
+    border: 0;
+    background: transparent;
+    overflow-x: visible;
+  }
+
+  .table,
+  .table thead,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    border: 1px solid rgba(74, 87, 38, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 249, 0.72);
+    margin-bottom: 0.8rem;
+    padding: 0.55rem 0;
+  }
+
+  .table td {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    gap: 0.7rem;
+    border-bottom: 0;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}

@@ -23,6 +23,7 @@ The project is a React + Vite migration of the original vanilla HTML/CSS/JS impl
 | Layer         | Choice      | Version |
 | ------------- | ----------- | ------- |
 | Framework     | React       | 18.3.1  |
+| Routing       | React Router | 6.26.2 |
 | Bundler       | Vite        | 5.4.2   |
 | Language      | JavaScript  | ES2022+ |
 | Styles        | CSS Modules | —       |
@@ -179,9 +180,11 @@ App
 
 The original site has a complete, well-structured `style.css`. CSS Modules allow porting existing CSS with minimal rewriting, preserving visual parity at low risk. Tailwind would require rewriting all styles; styled-components adds runtime overhead and a different mental model.
 
-### No React Router
+### React Router for admin paths
 
-The site is single-page and anchor-based. Adding a router would introduce unnecessary complexity without any benefit.
+The public invitation remains anchor-based at `/`, while React Router handles
+the admin routes `/login` and `/admin`, protected redirects, and direct URL
+loads for the SPA.
 
 ### Hooks-only state
 
@@ -214,6 +217,57 @@ The `webapp/` directory contains the original HTML/CSS/JS implementation. It is 
 ## Environment
 
 The RSVP form submits to `https://dominique-samuel.com/api/rsvp`. No environment variables are required for local development — the form will fail gracefully with a network error if the API is unreachable.
+
+---
+
+## Admin Environment and Routes
+
+Admin routes require Vite environment variables. Copy `.env.example` to `.env`
+and fill in the deployed values:
+
+```bash
+VITE_AWS_REGION=us-east-1
+VITE_COGNITO_ADMIN_APP_CLIENT_ID=<cognito-admin-app-client-id>
+VITE_RSVP_ADMIN_API_BASE_URL=https://dominique-samuel.com
+VITE_AUTH_FLOW=USER_PASSWORD_AUTH
+```
+
+The Cognito Admin App Client is documented with no client secret and supports
+`USER_PASSWORD_AUTH` and `USER_SRP_AUTH`. This frontend v1 implements
+`USER_PASSWORD_AUTH`; selecting `USER_SRP_AUTH` is detected and shown as an
+unsupported v1 flow instead of sending an invalid request.
+
+Admin sessions store only the Cognito `AccessToken` plus expiry metadata in
+`sessionStorage`. This keeps the admin logged in across refreshes in the same
+tab while clearing the token when the tab/window closes. The trade-off is that
+tokens are still browser-readable in a static SPA; HttpOnly cookies would need a
+backend/token broker.
+
+| Route | Access | Description |
+| ----- | ------ | ----------- |
+| `/` | Public | Wedding invitation page with loader, canvas animation, countdown and RSVP form. |
+| `/login` | Public/admin | Cognito-backed admin login. Authenticated users are redirected to `/admin`. |
+| `/admin` | Protected | RSVP management page. Unauthenticated users are redirected to `/login?redirect=/admin`. |
+
+The admin page calls the documented protected API under
+`VITE_RSVP_ADMIN_API_BASE_URL`:
+
+- `GET /admin/rsvp` with `limit`, `nextToken`, and `status=ATTENDING|DECLINED`
+- `POST /admin/rsvp`
+- `GET /admin/rsvp/{rsvpId}`
+- `PATCH /admin/rsvp/{rsvpId}`
+- `DELETE /admin/rsvp/{rsvpId}`
+
+Every business request sends `Authorization: Bearer <AccessToken>`. `401` and
+`403` responses clear the admin session and return the user to login.
+
+Known API limitations for this release:
+
+- Server-side sorting is not documented, so sorting is deterministic and
+  client-side over the currently loaded page.
+- Text search is client-side over the currently loaded page.
+- Full account recovery/password reset UI is not implemented; Cognito email
+  recovery remains the documented recovery path for v1.
 
 ---
 

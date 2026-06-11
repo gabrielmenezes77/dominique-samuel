@@ -1,0 +1,43 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(245, 243, 238, 0.78), rgba(245, 243, 238, 0.94)),
+    url("/assets/images/capa-DS.webp") center / cover no-repeat;
+  padding: 2rem;
+}
+
+.panel {
+  width: min(100%, 430px);
+  border: 1px solid rgba(74, 87, 38, 0.16);
+  border-radius: 8px;
+  background: rgba(245, 243, 238, 0.94);
+  box-shadow: 0 24px 70px rgba(26, 26, 26, 0.14);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+}
+
+.brand {
+  color: var(--olive);
+  font-family: var(--ff-d);
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  color: var(--text);
+  font-family: var(--ff-d);
+  font-size: clamp(2.2rem, 8vw, 3.4rem);
+  font-weight: 400;
+  line-height: 0.95;
+  margin-bottom: 0.9rem;
+}
+
+.subtitle {
+  color: rgba(26, 26, 26, 0.72);
+  font-family: var(--ff-b);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin-bottom: 1.6rem;
+}

@@ -1,0 +1,55 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 26, 26, 0.32);
+  padding: 1rem;
+}
+
+.dialog {
+  width: min(100%, 440px);
+  border-radius: 8px;
+  background: var(--ivory);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+  padding: clamp(1.25rem, 4vw, 1.7rem);
+}
+
+.dialog h2 {
+  font-family: var(--ff-d);
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.dialog p {
+  color: rgba(26, 26, 26, 0.74);
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+.actions button {
+  border: 1px solid rgba(74, 87, 38, 0.22);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--olive);
+  cursor: pointer;
+  font: 700 0.78rem var(--ff-b);
+  letter-spacing: 0.08em;
+  padding: 0.7rem 0.9rem;
+  text-transform: uppercase;
+}
+
+.actions .danger {
+  border-color: #8f2c20;
+  background: #8f2c20;
+  color: #fff;
+}
